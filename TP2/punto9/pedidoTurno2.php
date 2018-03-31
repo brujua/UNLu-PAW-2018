@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: brujua
  * Date: 30/3/2018
- * Time: 6:02 PM
+ * Time: 6:24 PM
  */
 
 $textArr = array("Titulo", "Nombre", "E-mail", "Telefono", "ColorPelo");
@@ -20,7 +20,7 @@ echo "<!DOCTYPE html>
 		</header>
 	    <main>
         <h4> Complete el formulario para hacer el pedido</h4>
-		 <form action=\"\" method=\"post\">";
+		 <form action=\"impresionTurno.php\" method=\"post\">";
 // imprimo los inputs texto
 foreach ($textArr as $text) {
     echo "<label for=\"{$text}\"> $text </label> \n
@@ -49,12 +49,13 @@ for ($i=0; $i<50; $i++){
         echo "<option value=\"2,{$i}\">2,{$i}</option>";
     }
 }
+echo "<br>";
 //fecha nacimiento
-echo "<br>			<label for=\"fecha de nacimiento\">fecha de nacimiento</label>
+echo "<label for=\"fecha_nacimiento\"> Fecha de nacimiento</label>
 			<input type=\"date\" name=\"fecha_nacimiento\"><br>";
 // Horario del turno
 echo "<label for=\"horario del turno\">Horario del Turno</label>
-	 		<select name=\"horario\" size=\"1\">";
+	 		<select name=\"horario\" size=\"1\" >";
 for($i = 8; $i<17;$i++){
     echo "<option value=\"{$i}:00\">{$i}:00</option>
 	 		<option value=\"{$i}:00\">{$i}:15</option>
@@ -71,3 +72,5 @@ echo "</form>
     </main>
    </body>
 </html>";
+
+
