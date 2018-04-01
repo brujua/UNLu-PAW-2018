@@ -1,6 +1,5 @@
 <?php
 include ("index.html");
-error_reporting(E_ALL ^ E_NOTICE);
 function redimensionar($rutaimg, $target_file_thumbs, $newwidth, $newheight){  		
 		$imagen = imagecreatefromjpeg($rutaimg);  				
 		$new = imagescale ($imagen, $newwidth, $newheight);	
