@@ -14,6 +14,11 @@ function basicSanitize($data)
     return $data;
 }
 
+function fileIsImage($file)
+{
+
+}
+
 
 /**
  * @return string Devuelve el encabezado de html hasta el nav
