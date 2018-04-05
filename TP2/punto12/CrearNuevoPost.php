@@ -12,16 +12,17 @@ echo blogStart();
 
 echo " <main>
             <h2>Crear nuevo post</h2>
-            <form action=\"nuevopost.php\" method=\"post\">
+           <!-- TODO ver si no hay que agregar enctype=\"multipart/form-data\"-->
+            <form action=\"nuevopost.php\" method=\"post\" >
             
                 <label for=\"pic\">Subir imagen:  </label>
                 <input type=\"file\" name=\"pic\" id=\"pic\"><br>
 
-                <label for=\"titleInput\"> Titulo:  </label>
-                <input type=\"text\" name=\"titulo\" id=\"titleInput\"><br>
+                <label for=\"titulo\"> Titulo:  </label>
+                <input type=\"text\" name=\"titulo\" id=\"titulo\"><br>
 
-                <label for=\"Descrp\">Descripción: </label>
-                <input type=\"text\" name=\"Descrp\" id=\"Descrp\"><br>
+                <label for=\"descrp\">Descripción: </label>
+                <input type=\"text\" name=\"descrp\" id=\"descrp\"><br>
 
                 <br>
                 <button type=\"submit\">Terminado</button>
