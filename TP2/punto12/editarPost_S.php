@@ -11,27 +11,6 @@ echo "estamos trabajando en esta funcionalidad...";
 
 require_once "utils.php";
 $imgName = null;
-
-// codigo basado en php.earth/docs/security/uploading
-// Para validar la imagen subida y crear un nombre modificado para el archivo
-// Check if we've uploaded a file
-if (!empty($_FILES['pic']) && $_FILES['pic']['error'] == UPLOAD_ERR_OK) {
-    // Be sure we're dealing with an upload
-    if (is_uploaded_file($_FILES['pic']['tmp_name']) === false) {
-        throw new \Exception('Error on upload: Invalid file definition');
-    }
-    // Rename the uploaded file
-    $uploadName = $_FILES['pic']['name'];
-    $ext = strtolower(substr($uploadName, strripos($uploadName, '.') + 1));
-    $filename = round(microtime(true)) . mt_rand() . '.' . $ext;
-    $dest = __DIR__ . '\imgs\\' . $filename;
-    move_uploaded_file($_FILES['pic']['tmp_name'], $dest);
-
-    // si la imagen es guardada mantengo su nombre en la variable imgName
-    $imgName = $filename;
-
-}
-
 if (isset($_POST["title"], $_POST["desc"], $_POST["fecha"])) {
 
     //inputs del user
@@ -39,11 +18,59 @@ if (isset($_POST["title"], $_POST["desc"], $_POST["fecha"])) {
     $desc = basicSanitize($_POST["desc"]);
     $fecha = basicSanitize($_POST["fecha"]);
 
-    // Recupero el post
+    // para recuperar el post
     $domtree = new DOMDocument();
     $domtree->load("posts.xml");
     // me paro en el root
     $xml = $domtree->getElementsByTagName("xml")->item(0);
+    $posts = $xml->getElementsByTagName("post");
+    $postE = null; //post buscado
+    //recupero el post
+    for ($i = 0; $i < $posts->length; $i++) {
+        $postAux = $posts->item($i);
+        if ($postAux->getElementsByTagName("date")->item(0)->nodeValue == $fecha) {
+            $postE = $postAux;
+            break;
+        }
+    }
+
+    if (post != null) {
+
+
+        // codigo basado en php.earth/docs/security/uploading
+        // Para validar la imagen subida y crear un nombre modificado para el archivo
+        // Check if we've uploaded a file
+        //Si cambiaron la imagen
+        if (!empty($_FILES['pic']) && $_FILES['pic']['error'] == UPLOAD_ERR_OK) {
+            // Be sure we're dealing with an upload
+            if (is_uploaded_file($_FILES['pic']['tmp_name']) === false) {
+                throw new \Exception('Error on upload: Invalid file definition');
+            }
+
+            // Rename the uploaded file
+            $uploadName = $_FILES['pic']['name'];
+            $ext = strtolower(substr($uploadName, strripos($uploadName, '.') + 1));
+            $filename = round(microtime(true)) . mt_rand() . '.' . $ext;
+            $dest = __DIR__ . '\imgs\\' . $filename;
+            move_uploaded_file($_FILES['pic']['tmp_name'], $dest);
+
+            // si la imagen es guardada mantengo su nombre en la variable imgName
+            $imgName = $filename;
+
+        }
+
+
+    } else {
+        echo "No pudimos encontrar el post..."
+    }
+
+
+
+
+
+
+
+
 
     //Creo el post
     $currentPost = $domtree->createElement("post");
@@ -66,7 +93,7 @@ if (isset($_POST["title"], $_POST["desc"], $_POST["fecha"])) {
 
 
 } else {
-    echo "Titulo o Descripcion vacias";
+    echo "Titulo, Descripcion o fecha vacias";
 }
 
 echo blogStart();
