@@ -39,7 +39,7 @@ for ($i = 0; $i < $posts->length; $i++) {
 
     //Imprimo boton para editar el post
     echo "<form action=\"editarPost.php\" method=\"post\">
-            <input type=\"text\" value=\"$fecha\" style=\"display:none\" name='fecha'>
+            <input type=\"text\" value=\"$fecha\" style=\"display:none\" name=\"fecha\">
             <button type=\"submit\">Editar</button>
         </form>
     </article>";
