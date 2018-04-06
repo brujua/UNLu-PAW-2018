@@ -42,6 +42,7 @@ if (isset($_POST["fecha"])) {
                 <label for=\"pic\">Cambiar imagen:  </label>
                 <input type=\"file\" name=\"pic\" id=\"pic\"><br> 
                 <button type=\"submit\">Terminado</button>
+                <input type=\"text\" value=\"$fecha\" style=\"display:none\" name=\"fecha\">
 
             </form>
 
