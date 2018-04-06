@@ -6,3 +6,7 @@
  * Time: 5:54 PM
  */
 
+require_once "utils.php";
+
+echo blogStart();
+echo blogEnd();
