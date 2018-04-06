@@ -7,7 +7,7 @@
  */
 
 require_once "utils.php";
-$imgDir = null;
+$imgName = null;
 
 // codigo basado en php.earth/docs/security/uploading
 // Para validar la imagen subida y crear un nombre modificado para el archivo
@@ -17,7 +17,6 @@ if (!empty($_FILES['pic']) && $_FILES['pic']['error'] == UPLOAD_ERR_OK) {
     if (is_uploaded_file($_FILES['pic']['tmp_name']) === false) {
         throw new \Exception('Error on upload: Invalid file definition');
     }
-    echo " prueba hola hola hola";
     // Rename the uploaded file
     $uploadName = $_FILES['pic']['name'];
     $ext = strtolower(substr($uploadName, strripos($uploadName, '.') + 1));
@@ -25,10 +24,9 @@ if (!empty($_FILES['pic']) && $_FILES['pic']['error'] == UPLOAD_ERR_OK) {
     $dest = __DIR__ . '\imgs\\' . $filename;
     move_uploaded_file($_FILES['pic']['tmp_name'], $dest);
 
-    // si la imagen es guardada mantengo su direccion en la variable imgDir
-    $imgDir = $dest;
-    echo "subiendo esta img: " . "$dest";
-    // Insert it into our tracking along with the original name
+    // si la imagen es guardada mantengo su nombre en la variable imgName
+    $imgName = $filename;
+
 }
 
 
@@ -41,6 +39,8 @@ if (isset($_POST["titulo"], $_POST["descrp"])) {
     // Se utiliza un archivo XML para guardar la informacion de los posts
     $domtree = new DOMDocument();
     $domtree->load("posts.xml");
+    // me paro en el root
+    $xml = $domtree->getElementsByTagName("xml")->item(0);
 
     //Creo el post
     $currentPost = $domtree->createElement("post");
@@ -53,11 +53,11 @@ if (isset($_POST["titulo"], $_POST["descrp"])) {
     // Se Agrega la descripcion
     $currentPost->appendChild($domtree->createElement('descrp', "$descrp"));
     // Si subió imagen se agrega
-    if ($imgDir != null) {
-        $currentPost->appendChild($domtree->createElement('imgDir', "$imgDir"));
+    if ($imgName != null) {
+        $currentPost->appendChild($domtree->createElement('imgName', "$imgName"));
     }
     //Agrego el post al xml
-    $domtree->appendChild($currentPost);
+    $xml->appendChild($currentPost);
     //guardo
     $domtree->save("posts.xml");
 
@@ -65,4 +65,8 @@ if (isset($_POST["titulo"], $_POST["descrp"])) {
 } else {
     echo "Titulo o Descripcion vacias";
 }
+
+echo blogStart();
+echo "<h2> Post Publicado Exitosamente </h2>";
+echo blogEnd();
 
