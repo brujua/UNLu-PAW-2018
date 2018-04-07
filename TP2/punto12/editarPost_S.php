@@ -10,7 +10,7 @@
 echo "estamos trabajando en esta funcionalidad...";
 
 require_once "utils.php";
-$imgName = null;
+$msjRes = "Post editado Exitosamente"; //variable para imprimir el resultado de la edicion
 if (isset($_POST["title"], $_POST["desc"], $_POST["fecha"])) {
 
     //inputs del user
@@ -19,10 +19,10 @@ if (isset($_POST["title"], $_POST["desc"], $_POST["fecha"])) {
     $fecha = basicSanitize($_POST["fecha"]);
 
     // para recuperar el post
-    $domtree = new DOMDocument();
-    $domtree->load("posts.xml");
+    $doc = new DOMDocument();
+    $doc->load("posts.xml");
     // me paro en el root
-    $xml = $domtree->getElementsByTagName("xml")->item(0);
+    $xml = $doc->getElementsByTagName("xml")->item(0);
     $posts = $xml->getElementsByTagName("post");
     $postE = null; //post buscado
     //recupero el post
@@ -34,13 +34,12 @@ if (isset($_POST["title"], $_POST["desc"], $_POST["fecha"])) {
         }
     }
 
-    if (post != null) {
-
-
+    if ($postE != null) {
         // codigo basado en php.earth/docs/security/uploading
         // Para validar la imagen subida y crear un nombre modificado para el archivo
         // Check if we've uploaded a file
         //Si cambiaron la imagen
+        $imgName = null;//variable usada si subieron una imagen
         if (!empty($_FILES['pic']) && $_FILES['pic']['error'] == UPLOAD_ERR_OK) {
             // Be sure we're dealing with an upload
             if (is_uploaded_file($_FILES['pic']['tmp_name']) === false) {
@@ -53,49 +52,48 @@ if (isset($_POST["title"], $_POST["desc"], $_POST["fecha"])) {
             $filename = round(microtime(true)) . mt_rand() . '.' . $ext;
             $dest = __DIR__ . '\imgs\\' . $filename;
             move_uploaded_file($_FILES['pic']['tmp_name'], $dest);
-
             // si la imagen es guardada mantengo su nombre en la variable imgName
             $imgName = $filename;
 
-        }
+            //para borrar la imagen anterior
+            //intento recuperar la imagen anterior
+            $oldImgName = null; //variable usada para guardar el nombre de la imagen anterior
+            $imgNode = $posts->item($i)->getElementsByTagName("imgName");
+            //Si el post tenia imagen, devolverá un nodo
+            if ($imgNode->length > 0) {
+                $oldImgName = $imgNode->item(0)->nodeValue;
+            }
+            //borro la imagen anterior
+            if ($oldImgName != null) {
+                //$destBorrado = '\imgs\\' .$oldImgName
+                unlink('imgs\\' . $oldImgName);
+            }
+            //cargo la imagen nueva al XML si es que hay
+            if ($imgName != null) {
+                //si ya existia el tag actualizo su contenido
+                if ($oldImgName != null) {
+                    $postE->getElementsByTagName("imgName")->item(0)->nodeValue = $imgName;
+                } else { //sino agrego el tag de imagen
+                    $postE->appendChild($doc->createElement("imgName", "$imgName"));
+                }
+            }
+        }// fin if cargaron imagen
+
+        //actualizo titulo
+        $postE->getElementsByTagName("title")->item(0)->nodeValue = $title;
+        //actualizo descripcion
+        $postE->getElementsByTagName("descrp")->item(0)->nodeValue = $desc;
+        //guardo
+        $doc->save("posts.xml");
 
 
     } else {
-        echo "No pudimos encontrar el post..."
+        $msjRes = "No pudimos encontrar el post...";
     }
-
-
-
-
-
-
-
-
-
-    //Creo el post
-    $currentPost = $domtree->createElement("post");
-
-    //Se agrega la fecha
-    $currentPost->appendChild($domtree->createElement('date', date('Y-m-d H:i:s')));
-
-    // Se Agrega el titulo
-    $currentPost->appendChild($domtree->createElement('title', "$title"));
-    // Se Agrega la descripcion
-    $currentPost->appendChild($domtree->createElement('descrp', "$desc"));
-    // Si subió imagen se agrega
-    if ($imgName != null) {
-        $currentPost->appendChild($domtree->createElement('imgName', "$imgName"));
-    }
-    //Agrego el post al xml
-    $xml->appendChild($currentPost);
-    //guardo
-    $domtree->save("posts.xml");
-
-
 } else {
-    echo "Titulo, Descripcion o fecha vacias";
+    $msjRes = "Titulo, Descripcion o fecha vacias";
 }
 
 echo blogStart();
-echo "<h2> Post Editado Exitosamente </h2>";
+echo "<h2> $msjRes </h2>";
 echo blogEnd();
