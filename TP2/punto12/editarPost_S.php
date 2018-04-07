@@ -6,8 +6,6 @@
  * Time: 7:19 AM
  */
 
-//date('Y-m-d H:i:s')
-echo "estamos trabajando en esta funcionalidad...";
 
 require_once "utils.php";
 $msjRes = "Post editado Exitosamente"; //variable para imprimir el resultado de la edicion
