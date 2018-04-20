@@ -30,13 +30,19 @@ class Turno
         }
     }
 
+    /**
+     * Inserta el turno en la base de datos y actualiza el campo nroTurno con el id generado del insert
+     */
     public function insert()
     {
         $campos = $this->getCamposStr();
         $pdoString = $this->getValoresParametrizadosPDO();
         $pdo = PdoFactory::build();
-        $query = $pdo->prepare("INSERT INTO peliculas ($campos) VALUES ($pdoString)");
+        $query = $pdo->prepare("INSERT INTO turnos ($campos) VALUES ($pdoString)");
+
         $query->execute($this->getValues());
+        $this->nroTurno = $pdo->lastInsertId();
+
     }
 
     public function getCamposStr()
@@ -61,6 +67,11 @@ class Turno
             $values[] = $this->$campo; // no entendemos como funciona esta asignación si no aclara el index a asignar
         }
         return $values;
+    }
+
+    public function getNroTurno()
+    {
+        return $this->nroTurno;
     }
 
 }

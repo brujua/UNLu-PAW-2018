@@ -5,9 +5,15 @@
  * Date: 20/4/2018
  * Time: 12:29 AM
  */
+
+require_once "utils.php";
+require "classes\Turno.php";
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
 if (!isset($_POST["Titulo"], $_POST["Nombre"], $_POST["E-mail"], $_POST["Telefono"], $_POST["edad"],
     $_POST["talle"], $_POST["altura"], $_POST["fecha_nacimiento"],
-    $_POST["colorPelo"], $_POST["horario"]
+    $_POST["ColorPelo"], $_POST["horario"]
 )) {
     throw new Exception("Datos incompletos", 1);
 }
@@ -21,11 +27,14 @@ $datosTurno = [
     "talle" => basicSanitize($_POST["talle"]),
     "altura" => basicSanitize($_POST["altura"]),
     "fechaNac" => basicSanitize($_POST["fecha_nacimiento"]),
-    "colorPelo" => basicSanitize($_POST["colorPelo"]),
+    "colorPelo" => basicSanitize($_POST["ColorPelo"]),
     "horario" => basicSanitize($_POST["horario"])
 ];
 
 $turno = new Turno();
 $turno->setDatos($datosTurno);
 $turno->insert();
-
+echo "Turno creado exitosamente";
+echo "\n Nro de turno: ";
+$var = $turno->getNroTurno();
+echo $var;
