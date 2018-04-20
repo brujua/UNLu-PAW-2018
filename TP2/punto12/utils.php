@@ -14,10 +14,6 @@ function basicSanitize($data)
     return $data;
 }
 
-function fileIsImage($file)
-{
-
-}
 
 
 /**
