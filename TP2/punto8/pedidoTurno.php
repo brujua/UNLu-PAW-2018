@@ -5,8 +5,10 @@
  * Date: 30/3/2018
  * Time: 6:02 PM
  */
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 
-$textArr = array("Titulo", "Nombre", "E-mail", "Telefono", "ColorPelo");
+$textArr = ["Titulo", "Nombre", "E-mail", "Telefono", "ColorPelo"];
 echo "<!DOCTYPE html>
 <html>
 	<head>
@@ -20,7 +22,7 @@ echo "<!DOCTYPE html>
 		</header>
 	    <main>
         <h4> Complete el formulario para hacer el pedido</h4>
-		 <form action=\"\" method=\"post\">";
+		 <form action=\"cargaTurno.php\" method=\"post\">";
 // imprimo los inputs texto
 foreach ($textArr as $text) {
     echo "<label for=\"{$text}\"> $text </label> \n
@@ -66,6 +68,16 @@ echo "<option value=\"17:00\">17:00</option>
 // Botones
 echo "<br><button type=\"reset\" value=\"reset\">Limpiar</button>
 	 		<button type=\"submit\" value=\"submit\">Enviar</button>";
+/* Sección agregada para la parte 2 del tp.
+    Se ha decidido no refactorizar el tema de imprimir html por echo
+    debido al pequeño tamaño del punto.
+*/
+echo "</form> <br> 
+      <form action=\"verTurno.php\" method=\"post\">
+        <h2>Consultar Turno Anterior</h2>
+        <label for=\"nroTurno\">Nro de Turno</label>
+		<input type=\"number\" name=\"nroTurno\"><br>
+		<button type=\"submit\" value=\"submit\">Consultar</button>";
 
 echo "</form>
     </main>
