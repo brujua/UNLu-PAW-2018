@@ -7,27 +7,27 @@
  */
 
 require_once "utils.php";
-require "classes\Turno.php";
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
+require_once "classes\Turno.php";
 
-if (!isset($_POST["Titulo"], $_POST["Nombre"], $_POST["E-mail"], $_POST["Telefono"], $_POST["edad"],
+/*error_reporting(E_ALL);
+ini_set('display_errors', '1');*/
+
+if (!isset($_POST["titulo"], $_POST["nombre"], $_POST["email"], $_POST["telefono"], $_POST["edad"],
     $_POST["talle"], $_POST["altura"], $_POST["fecha_nacimiento"],
-    $_POST["ColorPelo"], $_POST["horario"]
-)) {
+    $_POST["colorPelo"], $_POST["horario"])) {
     throw new Exception("Datos incompletos", 1);
 }
 
 $datosTurno = [
-    "titulo" => basicSanitize($_POST["Titulo"]),
-    "nombre" => basicSanitize($_POST["Nombre"]),
-    "email" => basicSanitize($_POST["E-mail"]),
-    "telefono" => basicSanitize($_POST["Telefono"]),
+    "titulo" => basicSanitize($_POST["titulo"]),
+    "nombre" => basicSanitize($_POST["nombre"]),
+    "email" => basicSanitize($_POST["email"]),
+    "telefono" => basicSanitize($_POST["telefono"]),
     "edad" => basicSanitize($_POST["edad"]),
     "talle" => basicSanitize($_POST["talle"]),
     "altura" => basicSanitize($_POST["altura"]),
     "fechaNac" => basicSanitize($_POST["fecha_nacimiento"]),
-    "colorPelo" => basicSanitize($_POST["ColorPelo"]),
+    "colorPelo" => basicSanitize($_POST["colorPelo"]),
     "horario" => basicSanitize($_POST["horario"])
 ];
 
