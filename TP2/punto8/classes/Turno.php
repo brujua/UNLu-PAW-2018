@@ -23,6 +23,25 @@ class Turno
     private $nroTurno;
     private $campos = ['titulo', 'nombre', 'email', 'telefono', 'edad', 'talle', 'altura', 'fechaNac', 'colorPelo', 'horario'];
 
+
+    public function __construct($numTurno = null)
+    {
+        if ($numTurno != null) {
+            $pdo = PdoFactory::build();
+            $query = $pdo->prepare("SELECT * FROM turnos AS p WHERE p.id = :nro;");
+            $query->bindParam(':nro', $numTurno);
+            $query->execute();
+            $datos = $query->fetch();
+            if ($datos === null) {
+                throw new Exception("Nro de turno inválido", 1);
+            }
+            foreach ($this->campos as $campo) {
+                $this->$campo = $datos[strtolower($campo)];
+            }
+
+        }
+    }
+
     public function setDatos($datos)
     {
         foreach ($this->campos as $campo) {
@@ -30,13 +49,20 @@ class Turno
         }
     }
 
+    /**
+     * Inserta el turno en la base de datos y actualiza el campo nroTurno con el id generado del insert
+     */
     public function insert()
     {
         $campos = $this->getCamposStr();
         $pdoString = $this->getValoresParametrizadosPDO();
         $pdo = PdoFactory::build();
-        $query = $pdo->prepare("INSERT INTO peliculas ($campos) VALUES ($pdoString)");
+        $query = $pdo->prepare("INSERT INTO turnos ($campos) VALUES ($pdoString)");
+
         $query->execute($this->getValues());
+        //guardo el nro de turno.
+        $this->nroTurno = $pdo->lastInsertId();
+
     }
 
     public function getCamposStr()
@@ -61,6 +87,20 @@ class Turno
             $values[] = $this->$campo; // no entendemos como funciona esta asignación si no aclara el index a asignar
         }
         return $values;
+    }
+
+    public function getKeyAndValues()
+    {
+        $values = [];
+        foreach ($this->campos as $campo) {
+            $values[$campo] = $this->$campo;
+        }
+        return $values;
+    }
+
+    public function getNroTurno()
+    {
+        return $this->nroTurno;
     }
 
 }
