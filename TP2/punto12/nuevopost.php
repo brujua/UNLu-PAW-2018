@@ -33,39 +33,23 @@ if (!empty($_FILES['pic']) && $_FILES['pic']['error'] == UPLOAD_ERR_OK) {
 if (isset($_POST["titulo"], $_POST["descrp"])) {
 
     //inputs del user
-    $title = basicSanitize($_POST["titulo"]);
-    $descrp = basicSanitize($_POST["descrp"]);
+    $datosPost = [
+        "title" => basicSanitize($_POST["titulo"]),
+        "descr" => basicSanitize($_POST["descrp"]),
+        "imgname" => $imgName,
+        "fecha" => date('Y-m-d'),
+    ];
 
-    // Se utiliza un archivo XML para guardar la informacion de los posts
-    $domtree = new DOMDocument();
-    $domtree->load("posts.xml");
-    // me paro en el root
-    $xml = $domtree->getElementsByTagName("xml")->item(0);
-
-    //Creo el post
-    $currentPost = $domtree->createElement("post");
-
-    //Se agrega la fecha
-    $currentPost->appendChild($domtree->createElement('date', date('Y-m-d H:i:s')));
-
-    // Se Agrega el titulo
-    $currentPost->appendChild($domtree->createElement('title', "$title"));
-    // Se Agrega la descripcion
-    $currentPost->appendChild($domtree->createElement('descrp', "$descrp"));
-    // Si subió imagen se agrega
-    if ($imgName != null) {
-        $currentPost->appendChild($domtree->createElement('imgName', "$imgName"));
-    }
-    //Agrego el post al xml
-    $xml->appendChild($currentPost);
-    //guardo
-    $domtree->save("posts.xml");
-
+    $post = new Post();
+    $post->setCampos($datosPost);
+    $post->persist();
 
 } else {
     echo "Titulo o Descripcion vacias";
 }
 
+
+// no se refactorizará por cuestiones de tiempo:
 echo blogStart();
 echo "<h2> Post Publicado Exitosamente </h2>";
 echo blogEnd();

@@ -12,7 +12,6 @@ echo blogStart();
 
 echo " <main>
             <h2>Crear nuevo post</h2>
-           <!-- TODO ver si no hay que agregar -->
             <form action=\"nuevopost.php\" method=\"post\" enctype=\"multipart/form-data\">
             
                 <label for=\"pic\">Subir imagen:  </label>

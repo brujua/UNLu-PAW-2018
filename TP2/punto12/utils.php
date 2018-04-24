@@ -35,10 +35,10 @@ function blogStart()
 
         </header>
         <nav>
-            <form action=\"verPosts.php\" method=\"get\">
+            <form action=\"index.php\" method=\"get\">
                 <button type=\"submit\"> Ver posts</button>
             </form>
-            <form action=\"CrearNuevoPost.php\" method=\"get\">
+            <form action=\"views/new.post.view.php\" method=\"get\">
                 <button type=\"submit\">Crear nuevo post</button>
             </form>
         </nav>";
