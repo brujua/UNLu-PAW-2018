@@ -167,7 +167,29 @@ class Post
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
+    }
 
+    /**
+     * @param $comment Comment comentario a agregar
+     */
+    public function addNewComment($comment)
+    {
+        try {
+            if ($this->id != null) {
+                $body = $comment->getBody();
+                $author = $comment->getAuthor();
+                $pdo = PdoFactory::build();
+                $query = $pdo->prepare("INSERT INTO comments (author, body, id_post) VALUES (:aut, :body, :idP)");
+                $query->bindParam(':aut', $author);
+                $query->bindParam(':body', $body);
+                $query->bindParam(':idP', $this->id);
+                $query->execute();
+
+            }
+
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
     }
 
     public function getComments()

@@ -5,8 +5,7 @@
  * Date: 5/4/2018
  * Time: 2:22 AM
  */
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+
 require_once "utils.php";
 require_once "classes/Post.php";
 

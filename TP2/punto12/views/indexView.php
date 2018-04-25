@@ -38,20 +38,26 @@
                             <button type="submit"> Editar</button>
                         </form>
                     </div>
-                    <?php if ($comments) : ?>
 
-                        <section>
-                            <h3>Comentarios</h3>
+                    <section>
+                        <h3>Comentarios</h3>
+                        <?php if ($comments) : ?>
                             <?php foreach ($comments as $comm) : ?>
                                 <div class="comment" title="">
                                     <h3>Author: <?= $comm->getAuthor() ?></h3>
                                     <p> <?= $comm->getBody() ?> </p>
                                 </div>
                             <?php endforeach; ?>
-                        </section>
+                        <?php endif; ?>
+                        <form action="addComment.php" method="post">
+                            <label for="">Author: </label>
+                            <input type="text" name="author"> <br>
+                            <input class="paragraphInput" type="text" name="body"> <br>
+                            <input type="number" name="idPost" value="<?= $post->getID(); ?>" style="display: none">
+                            <button type="submit"> Agregar Comentario</button>
+                        </form>
+                    </section>
 
-
-                    <?php endif; ?>
                 </article>
             <?php endforeach; ?>
         <?php else : ?>
