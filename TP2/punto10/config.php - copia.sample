@@ -1,0 +1,10 @@
+<?php
+
+$db = new stdClass();
+
+$db->username = 'user';
+$db->password = 'pass';
+$db->host = 'localhost';
+$db->databasename = 'dbname';
+
+return $db;
