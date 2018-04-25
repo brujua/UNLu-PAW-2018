@@ -29,6 +29,8 @@
 
         <label for="descrp">Descripción: </label>
         <input type="text" name="descrp" id="descrp"><br>
+        <label for="tags">Tags (ingrese los tags que desee, separados por '<b>;</b>'</label> <br>
+        <input type="text" name="tags" id="tags">
 
         <br>
         <button type="submit">Terminado</button>

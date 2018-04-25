@@ -7,7 +7,10 @@
  */
 
 require_once "utils.php";
+require_once "classes/Post.php";
+
 $imgName = null;
+
 
 // codigo basado en php.earth/docs/security/uploading
 // Para validar la imagen subida y crear un nombre modificado para el archivo
@@ -37,13 +40,21 @@ if (isset($_POST["titulo"], $_POST["descrp"])) {
         "title" => basicSanitize($_POST["titulo"]),
         "descr" => basicSanitize($_POST["descrp"]),
         "imgname" => $imgName,
-        "fecha" => date('Y-m-d'),
+        "fecha" => date('Y-m-d')
     ];
 
     $post = new Post();
     $post->setCampos($datosPost);
     $post->persist();
 
+
+    if (isset($_POST['tags'])) {
+        $tagsStr = basicSanitize($_POST['tags']);
+        $tags = explode(';', $tagsStr);
+        foreach ($tags as $tag) {
+            $post->addNewTag($tag);
+        }
+    }
 } else {
     echo "Titulo o Descripcion vacias";
 }
