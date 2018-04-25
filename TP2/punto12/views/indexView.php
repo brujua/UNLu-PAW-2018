@@ -15,6 +15,7 @@
         <?php if ($posts) : ?>
             <?php foreach ($posts as $post) : ?>
                 <?php $datos = $post->getCamposAndValues(); ?>
+                <?php $tags = $post->getTags(); ?>
                 <?php $comments = $post->getComments(); ?>
                 <article>
                     <h2><?= $datos['title'] ?></h2>
@@ -23,6 +24,34 @@
                     <?php endif; ?>
                     <p><?= $datos['descr'] ?></p>
                     <small><?= $datos['fecha'] ?></small>
+                    <?php if (!empty($tags)) : ?>
+                        <h4>Tags</h4>
+                        <ul>
+                            <?php foreach ($tags as $tag) : ?>
+                                <li><?= $tag ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+                    <div>
+                        <form action="editPostControl.php" method="post">
+                            <input type="number" name="idPost" value="<?= $post->getID(); ?>" style="display: none">
+                            <button type="submit"> Editar</button>
+                        </form>
+                    </div>
+                    <?php if ($comments) : ?>
+
+                        <section>
+                            <h3>Comentarios</h3>
+                            <?php foreach ($comments as $comm) : ?>
+                                <div class="comment" title="">
+                                    <h3>Author: <?= $comm->getAuthor() ?></h3>
+                                    <p> <?= $comm->getBody() ?> </p>
+                                </div>
+                            <?php endforeach; ?>
+                        </section>
+
+
+                    <?php endif; ?>
                 </article>
             <?php endforeach; ?>
         <?php else : ?>

@@ -12,9 +12,7 @@ class Post
 {
     private $id;
     private $title;
-    private $fecha;
     private $descr;
-    private $tags;
     private $imgName;
     private $comments;
     private $campos = ['title', 'descr', 'imgname', 'fecha'];
@@ -32,27 +30,66 @@ class Post
             if ($datos === null) {
                 throw new Exception("ID de blog inválido", 1);
             }
-            //TODO terminar
+            $this->setCampos($datos);
+            $this->setID($datos['id']); // sería lo mismo que asignarle el $idPost recivido
+
+            //recupero los tags
+            $queryT = $pdo->prepare("SELECT * FROM tags AS t WHERE t.id_post= :nroP");
+            $queryT->bindParam('nroP', $idPost);
+            $queryT->execute();
+            $rows = $queryT->fetchAll();
+            //y los agrego al objeto post
+            foreach ($rows as $row) {
+                $this->addTag($row['tag']);
+            }
 
         }
     }
 
     /**
-     * @return array de todos los objectos Post persistidos
+     * @return array de todos los objetos Post persistidos
      */
     public static function getAllPosts()
     {
-        $posts = [];
+        $posts = []; //variable de retorno
         $pdo = PdoFactory::build();
-        $query = $pdo->prepare("SELECT * FROM Post");
-        $query->execute();
-        $rows = $query->fetchAll();
+        $queryP = $pdo->prepare("SELECT * FROM Post");
+        $queryP->execute();
+        //recupero todos los posts
+        $rowsP = $queryP->fetchAll();
 
-        foreach ($rows as $row) {
+        //por cada tupla
+        foreach ($rowsP as $rowP) {
+            // creo y cargo el objeto Post
             $post = new Post();
-            $post->setCampos($row);
+            $post->setCampos($rowP);
+            $post->setID($rowP['id']);
+
+            //recupero las tuplas de comentarios del post
+            $queryComm = $pdo->prepare("SELECT * FROM comments AS c WHERE c.id_post = :idP");
+            $queryComm->bindParam(':idP', $rowP['id']);
+            $queryComm->execute();
+            $rowsComm = $queryComm->fetchAll();
+
+            //recupero las tuplas de tags del post
+            $queryTag = $pdo->prepare("SELECT * FROM tags AS t WHERE t.id_post = :idP");
+            $queryTag->bindParam(':idP', $rowP['id']);
+            $queryTag->execute();
+            $rowsTag = $queryTag->fetchAll();
+
+            // Creo y cargo los objetos Comment y los asocio al Post
+            foreach ($rowsComm as $rowC) {
+                $comm = new Comment();
+                $comm->setDatos($rowC);
+                $post->addComment($comm);
+            }
+            //cargo los tags al post
+            foreach ($rowsTag as $rowT) {
+                $post->addTag($rowT['tag']);
+            }
+            //agrego el post al array
             array_push($posts, $post);
-        }
+        }// end foreach tupla
         return $posts;
     }
 
@@ -70,6 +107,9 @@ class Post
         $pdo = PdoFactory::build();
         $query = $pdo->prepare("insert into Post ($camposN) VALUES ($pdoStr)");
         $query->execute($this->getValues());
+        //guardo el id
+        $this->id = $pdo->lastInsertId();
+
 
     }
 
@@ -97,22 +137,52 @@ class Post
         return $data;
     }
 
-    public function setTags($datos)
+
+    /*
+     * Las funciones addTag() y addComment() son privadas ya que se usan internamente cuando se recuperan
+     * Posts de la base de datos, son para agregar al Post tags y Comments que ya han sido persistidos,
+     * en cambio, para agregar nuevos Comments y tags que no han sido persistidos existen las funciones
+     * públicas addNewTag() y addNewComment().
+     */
+    private function addTag($tag)
     {
-        foreach ($datos as $dato) {
-            $this->tags[] = $dato;
-        }
+        array_push($this->tags, $tag);
     }
 
-    public function addComment($comment)
+    private function addComment($comment)
     {
         array_push($this->comments, $comment);
     }
 
+    public function addNewTag($tag)
+    {
+        try {
+            if ($this->id != null) {
+                $pdo = PdoFactory::build();
+                $query = $pdo->prepare("INSERT INTO tags (id_post, tag) VALUES (:idP, :tagg)");
+                $query->bindParam('idP', $this->id);
+                $query->bindParam('tagg', $tag);
+                $query->execute();
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+
+    }
+
     public function getComments()
     {
-        //TODO devolver array of Comment s
-        return null;
+        return $this->comments;
+    }
+
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    public function getStrTags()
+    {
+        return implode(';', $this->tags);
     }
 
     public function getCamposAndValues()
@@ -122,6 +192,21 @@ class Post
             $values[$campo] = $this->$campo;
         }
         return $values;
+    }
+
+    private function setID($id)
+    {
+        $this->id = $id;
+    }
+
+    public function getID()
+    {
+        return $this->id;
+    }
+
+    public function getImgName()
+    {
+        return $this->imgName;
     }
 
 }
