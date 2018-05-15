@@ -3,7 +3,7 @@
 class Config
 {
 
-    private $configFile = __DIR__ . "/../config.php";
+    private $configFile = __DIR__ . "/config/config.php";
     public $db;
 
     public function __construct()
