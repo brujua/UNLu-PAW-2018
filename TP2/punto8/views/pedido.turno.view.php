@@ -1,16 +1,3 @@
-<?php
-    //si se quiere visualizar un turno ya cargado, es decir,
-    // que previamente se apreto el botón para visualizar un turno anterior, seteo las variables.
-    $turno = !isset($_POST["nroTurno"]) ? null : new Turno($_POST["nroTurno"]);
-    $datos = null;
-    if ($turno != null) {
-        $datos = $turno->getKeyAndValues();
-    }
-
-    $textArr = ["titulo", "nombre", "email", "telefono", "colorPelo"];
-?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -93,13 +80,8 @@
         <br><button type="reset" value="reset">Limpiar</button>
         <button type="submit" value="submit">Enviar</button>
     </form>
-
-    <!--/* Sección agregada para la parte 2 del tp.
-    Se ha decidido no refactorizar el tema de imprimir html por echo
-    debido al pequeño tamaño del punto.
-    */-->
     <br>
-    <form action="pedidoTurno.php" method="post">
+    <form action="index.php" method="post">
         <h2>Consultar Turno Anterior</h2>
         <label for="nroTurno">Nro de Turno</label>
         <input type="number" name="nroTurno"><br>

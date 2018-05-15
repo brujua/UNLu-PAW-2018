@@ -84,7 +84,7 @@ class Turno
     {
         $values = [];
         foreach ($this->campos as $campo) {
-            $values[] = $this->$campo; // no entendemos como funciona esta asignación si no aclara el index a asignar
+            $values[] = $this->$campo;
         }
         return $values;
     }
