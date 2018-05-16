@@ -17,7 +17,7 @@
             <h2>Editar Post </h2>
             <input type="text" name="title" value="<?= $datos['title'] ?>">
             <input type="text" name="desc" value="<?= $datos['descr'] ?>">
-            <label for="tags"> Tags (separados por '<b>;</b>')</label>
+            <label for="tags"> Tags (separados por '<b>;</b>' o '<b>,</b>')</label>
             <input type="text" id="tags" name="tags" value="<?= $tagStr ?>">
             <label for="pic">Cambiar imagen: </label>
             <input type="file" name="pic" id="pic"><br>

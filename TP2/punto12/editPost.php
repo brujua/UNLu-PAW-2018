@@ -49,8 +49,8 @@ if (isset($_POST["title"], $_POST["desc"], $_POST["idP"])) {
 
         //borro la imagen anterior
         if ($oldImgName != null) {
-            //$destBorrado = '\imgs\\' .$oldImgName
-            unlink('imgs\\' . $oldImgName);
+            $destBorrado = __DIR__ . '\imgs\\' . $oldImgName;
+            unlink($destBorrado);
         }
     }// fin if cargaron imagen
 
@@ -73,7 +73,17 @@ if (isset($_POST["title"], $_POST["desc"], $_POST["idP"])) {
     if (isset($_POST['tags'])) {
         $queryT = $pdo->prepare("INSERT INTO tags (id_post,tag) VALUES (:id, :tagg)");
         $tags = basicSanitize($_POST['tags']);
-        $tagsArr = explode(';', $tags);
+        $tagsAux = explode(';', $tags);
+        $tagsArr =[];
+        print_r($tagsAux);
+        foreach ($tagsAux as $tagAux){
+            $tagsAux2 = explode(',',$tagAux);
+            foreach ($tagsAux2 as $tagAux2){
+                array_push($tagsArr, $tagAux2);
+            }
+
+        }
+        print_r($tagsArr);
         foreach ($tagsArr as $tag) {
             $queryT->bindParam(':id', $idP);
             $queryT->bindParam(':tagg', $tag);
