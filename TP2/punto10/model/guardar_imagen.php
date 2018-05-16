@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/core/PdoFactory.php';
+require __DIR__ . '/../core/PdoFactory.php';
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
@@ -81,6 +81,3 @@ if ($uploadOk == 0) {
         # SI TODO ESTÁ TODO OK, HAGO INSERT EN LA BD		
         insertImgDB($_FILES["fileToUpload"]["tmp_name"], $target_file_thumbs, basename( $_FILES["fileToUpload"]["name"]));
 }
-header('Location: index.php');
-
-?>
