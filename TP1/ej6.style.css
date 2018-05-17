@@ -1,23 +1,286 @@
-header {
-	text-align: center;
+main {}
+
+body {
+
+    font-family: "Lato", sans-serif;
+    background-color: #0E0B16;
+
 }
 
-img {
+/*flex del Header+nav*/
+
+header {
+    color: aliceblue;
+    padding-right: 35px;
+    padding-left: 35px;
+}
+
+.header-1erRow {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#logo {
+
+    width: 100px;
+    height: 100px;
+    /*float: left;*/
+}
+
+
+.menu-1erRow {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#menuButton {
+    font-size: 30px;
+    cursor: pointer;
+    align-content: flex-start;
+    /*margin-left:20%;*/
+}
+
+#searchBox {
+    align-content: flex-end
+}
+
+#searchTag {
+    vertical-align: middle;
+    margin-right: 30px;
+}
+
+a {
+    margin: 10px;
+}
+
+.linknav {
+    /*margin: 25px;
+    padding: 25px;*/
+    font-size: 18px;
+    display: flex;
+    justify-content: flex-end;
+    /*float: right!important;*/
+    margin: 5px;
+    color: aliceblue;
+    background-color: #0E0B16;
+    vertical-align: baseline;
+}
+
+
+/*------MAIN----*/
+
+main {
+    /*margin-top: 15px;*/
+    /*background-color: #E7DFDD;*/
+    background: linear-gradient(141deg, #808080 0%, #8D8D8D 51%, #808080 75%);
+    color: black;
+    margin-bottom: 30px;
+}
+
+/*General de las listas*/
+
+ul {
+    list-style-type: none;
+}
+
+/*---Scrolling Promos---*/
+
+.scrollProm {
+    align-content: center;
+    padding: 30px;
+    /*margin: 30px;*/
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center;*/
+}
+
+.imag {
+    margin: 10px;
+    /*
+    float: left;
+    display: inline-block;
+*/
+}
+
+.promo1 {
+    width: 100%;
+    height: 200px;
+
+}
+
+.promo2 {
+    width: 100%;
+    height: 200px;
+}
+
+.promo3 {
+    width: 100%;
+    height: 200px;
+}
+
+/*---featured departments---*/
+
+.featured-depts {
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.imgBox {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.dept {
+    flex-basis: 30%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+/*Brand logos*/
+
+.cointainer {}
+
+.brand-logos {
+    margin-top: 30px;
+    width: auto;
+    height: 150px;
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
-figcaption {
-	text-align: center;
+/*-- Garabatos --*/
+
+.garabatosBox {
+    display: flex;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    justify-content: space-between;
 }
 
-main {
-	width: 80%;
-	display: block;
-	margin: auto;
+.main-garab {
+    flex-basis: 40%;
 }
 
-#searchBox {
-    position: absolute
+.garab {
+    flex-basis: 20%;
+    display: flex;
+    flex-direction: column;
+}
+
+article h2 {
+    margin-bottom: 0;
+}
+
+article p {
+    margin-top: 1%;
+}
+
+
+.vertical-border {
+    margin: 5px;
+    border-left: thick solid #000000;
+    border-width: thin;
+}
+
+/*---- footer ----*/
+
+footer {
+    margin-top: 15px;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    /*flex-basis: 22%;*/
+}
+
+.footerLinks {
+    display: flex;
+    flex-basis: 22% flex-direction: column;
+}
+
+.footerLinks a {
+    flex-basis: 100%;
+}
+
+.news-sign {}
+
+#mailIcon {
+    height: 30px;
+    width: 30pxl;
+}
+
+#socialIcon {
+    margin-right: 40px;
+    height: 35px;
+    width: auto;
+    float: right;
+}
+
+.firmas {
+    margin-right: 30px;
+    float: right;
+    text-align: right;
+}
+
+/*Menu del costado*/
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: aliceblue;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
 }
