@@ -16,7 +16,7 @@ require_once "utils.php";
  */
 
 
-$msjRes = "Post editado Exitosamente"; //variable para imprimir el resultado de la edicion
+
 if (isset($_POST["title"], $_POST["desc"], $_POST["idP"])) {
 
     //inputs del user
@@ -91,10 +91,9 @@ if (isset($_POST["title"], $_POST["desc"], $_POST["idP"])) {
 
 
 } else {
-    $msjRes = "Titulo, Descripcion o fecha vacias";
+    $msjerr = "Titulo, Descripcion o fecha vacias";
+    throw new Exception($msjerr);
 }
 
-/*echo blogStart();
-echo "<h2> $msjRes </h2>";
-echo blogEnd();*/
+
 header('Location:  '.  'index.php'  );

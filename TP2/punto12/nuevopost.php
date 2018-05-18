@@ -56,12 +56,9 @@ if (isset($_POST["titulo"], $_POST["descrp"])) {
         }
     }
 } else {
-    echo "Titulo o Descripcion vacias";
+    throw new Exception("Titulo o Descripcion vacias");
 }
 
 
-// no se refactorizará por cuestiones de tiempo:
-echo blogStart();
-echo "<h2> Post Publicado Exitosamente </h2>";
-echo blogEnd();
+header('Location:  '.  'index.php'  );
 
