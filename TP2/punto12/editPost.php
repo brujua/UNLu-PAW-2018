@@ -75,15 +75,13 @@ if (isset($_POST["title"], $_POST["desc"], $_POST["idP"])) {
         $tags = basicSanitize($_POST['tags']);
         $tagsAux = explode(';', $tags);
         $tagsArr =[];
-        print_r($tagsAux);
+
         foreach ($tagsAux as $tagAux){
             $tagsAux2 = explode(',',$tagAux);
             foreach ($tagsAux2 as $tagAux2){
                 array_push($tagsArr, $tagAux2);
             }
-
         }
-        print_r($tagsArr);
         foreach ($tagsArr as $tag) {
             $queryT->bindParam(':id', $idP);
             $queryT->bindParam(':tagg', $tag);
@@ -96,6 +94,7 @@ if (isset($_POST["title"], $_POST["desc"], $_POST["idP"])) {
     $msjRes = "Titulo, Descripcion o fecha vacias";
 }
 
-echo blogStart();
+/*echo blogStart();
 echo "<h2> $msjRes </h2>";
-echo blogEnd();
+echo blogEnd();*/
+header('Location:  '.  'index.php'  );
