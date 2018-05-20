@@ -214,3 +214,28 @@ textarea {
 span.autor {
     font-weight: bold;
 }
+/*---Print rules----*/
+
+@media print {
+    header, nav, footer {
+        display: none;
+    }
+    .post button {
+        display: none;
+    }
+    .nuevo-comment {
+        display: none;
+    }
+
+    img {
+        max-width: 500px;
+    }
+
+    .post {
+        page-break-before: auto;
+    }
+    .meta-post {
+        page-break-after: always;
+    }
+
+}
