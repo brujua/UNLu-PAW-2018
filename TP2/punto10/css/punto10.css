@@ -1,0 +1,13 @@
+h1{
+	margin: 0px;
+	background-color: red;
+	text-align: center;
+}
+form{
+	border-style: double;
+	padding: 10px;
+}
+h3{
+	padding-left: 10px;
+	background-color: blue;
+}
