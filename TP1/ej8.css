@@ -1,0 +1,240 @@
+html, body, div, span, applet, object, iframe,
+h1, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+header h2{
+	margin: 0px;
+	padding-top: 10px;
+	padding-left: 10px;
+	color: white;
+}
+header h1{
+	margin-top: 0px;
+	padding-top: 0px;
+	font-size: 50px;
+	padding-bottom: 50px;
+	text-align: center;
+	color: white;
+}
+
+body{
+	font: italic bold 12px/30px Cursive, serif;
+	margin-left: 20%;
+	margin-right: 20%;
+	
+}
+
+main{
+	background-color: #EEE8AA;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 20px;
+}
+
+header{
+
+	background-color: red;
+}
+
+
+ol{
+	list-style-type: none;
+	display: grid;
+
+}
+footer>ul{
+	float: right;
+	margin-top: -25px;
+	margin-bottom: 10px;
+	list-style-type: none;
+	display: inline-flex;	
+
+}
+footer>ul>li{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+li{
+
+	height: 100px;
+	/*grid-template-columns: auto auto auto;
+	/*grid-template-rows: auto auto auto;*/
+
+}
+div{	
+	text-align: left;
+	width: 245px;
+}
+p{
+	line-height: 100%;
+	padding: 5px;
+
+}
+footer{
+	background-color: red;
+	color: white;
+}
+
+.hd{
+	background-color: red;
+	color: white;
+	border-radius: 7px 7px 7px 7px;
+	
+	width: 240px;
+	height: 45px;
+	vertical-align: middle;
+	text-align: center;
+	align-content: center;
+	
+}
+.hd>h3{
+	position: relative;
+	top: 5px;
+	margin: 5px;
+	border-radius: 7px 7px 7px 7px;
+	vertical-align: middle;
+	border-style: dotted;  	
+	border-width: 2px;
+}
+.der{
+	float: right;
+}
+.img1{
+	padding-top: 10px;
+	padding-left: 30px;
+}
+.firstImg{
+	margin-top: -20px;
+	padding-bottom: 5px;
+	padding-top: 0px;
+	padding-left: 50px;	
+	float: left;
+}
+.evolution{
+	float: right;
+	padding: 0px;
+	margin-top: -60px;
+	align-content: center;
+	width: 200px;
+	height: 60px;
+}
+.izq{
+	
+	
+	float: left;
+}
+.anio{
+	
+	position: absolute;
+	left:  47%;
+	text-align: center;
+	background-color: #008B8B;
+	color: white;
+	padding: 20px;
+	border-radius: 200px 200px 200px 200px;
+	border: 0px solid #000000;
+	z-index: 2;
+
+}
+
+.tbw{
+	position: relative;
+	top: -50px;
+}
+.pp{
+	margin-top: 5px;
+	margin-right: 5px;
+	background-color: #F8F8FF;
+}
+.cssDesign{
+	margin-top: -100px;
+}
+
+.row{
+	display: flex;
+}
+.imgJs{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	padding: 10px;
+	height: 50px;
+	width: 275px;
+}
+.phpWebSites{
+	margin-top: 50px;
+}
+.js{
+	margin-top: 10px;
+}
+.imgCss{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	padding: 10px;
+	height: 100px;
+	width: 250px;
+
+}
+.imgPhp{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	padding: 10px;
+	height: 100px;
+	width: 200px;
+}
+.cssWeb20{
+	margin-top: -40px;
+}
+
+.imgWeb20{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	padding: 10px;
+	height: 75px;
+	width: 400px;	
+}
+
+.html5{
+	margin-top: -75px;
+}
+.imgHtml5{
+	padding: 10px;
+	height: 75px;
+	width: 200px;		
+}
+.webcreated{
+	margin-top: 10px;	
+}
+
+#img-facebook{
+
+	border-radius: 200px 200px 200px 200px;
+	padding-left: 10px;
+	height: 50px;
+	width: 50px;
+}
+.footerli{
+
+	border-right-style: solid;
+	border-right-width: 4px;
+	border-right-color: white;
+
+}
