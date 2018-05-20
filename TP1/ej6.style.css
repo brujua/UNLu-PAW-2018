@@ -7,7 +7,7 @@ body {
 
 }
 
-/*flex del Header+nav*/
+/*Header*/
 
 header {
     color: aliceblue;
@@ -213,7 +213,8 @@ footer {
 
 .footerLinks {
     display: flex;
-    flex-basis: 22% flex-direction: column;
+    flex-basis: 22%;
+    flex-direction: column;
 }
 
 .footerLinks a {
@@ -224,7 +225,7 @@ footer {
 
 #mailIcon {
     height: 30px;
-    width: 30pxl;
+    width: auto;
 }
 
 #socialIcon {
