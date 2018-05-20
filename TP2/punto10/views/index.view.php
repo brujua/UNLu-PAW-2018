@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Guardar Imagenes</title>
     <meta name="author" content="Bruno Crisafulli, Mario Quiroga">    
+    <link rel="stylesheet" type="text/css" href="css/punto10.css">
 </head>
 <body>
 	<section>
@@ -31,6 +32,7 @@
     			?>
     			<img src=<?= $dataUri ?> />
     		<?php endforeach; ?>
+    		
        	<?php endif; ?>		
 	</section>
 </body>
