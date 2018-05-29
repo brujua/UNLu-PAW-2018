@@ -1,0 +1,23 @@
+h3:hover {
+	color: white;
+    background-color: red;
+	cursor: pointer;
+}
+
+td{
+	background-color: green;
+	height: 50px;
+	width: 50px;
+	border-style: solid;;
+	text-align: center;
+}
+td:hover {
+	cursor: pointer;
+	background-color: white;
+}
+
+
+#memoTest{
+	height: 500px;
+	width: 500px;
+}

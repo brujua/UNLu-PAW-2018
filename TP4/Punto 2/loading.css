@@ -1,0 +1,17 @@
+.loader-icon {
+    border:10px dotted #fbe268;
+    border-style: dotted;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
