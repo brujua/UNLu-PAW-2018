@@ -1,6 +1,6 @@
 "use strict";
 
-var LoaderIcon = {
+var LoadingListener = {
 
     duration: 4000,
     intervals: 40,
@@ -10,8 +10,8 @@ var LoaderIcon = {
 		[231, 72, 58] /* #e7483a red */
 	],
 
-    init: function (container) {
-        var loader = document.getElementById(container);
+    init: function (loaderID) {
+        var loader = document.getElementById(loaderID);
         this.transitionStart(loader);
     },
 
