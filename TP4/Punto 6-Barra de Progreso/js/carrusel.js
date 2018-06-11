@@ -8,6 +8,7 @@
 			siguiente = 0;
 		}
 		document.getElementById(clases[posicion]).setAttribute('class', 'oculto');
+		move();
 		document.getElementById(clases[siguiente]).setAttribute('class', 'visible');
 		posicion = siguiente;
 	}
