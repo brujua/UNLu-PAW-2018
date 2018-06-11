@@ -84,9 +84,8 @@ ul {
 
 /*---Scrolling Promos---*/
 .scrollProm {    
-    padding-left : 40px;
-    margin-left: 35px;
-    margin-bottom: 40px;
+    padding: 40px;
+    margin: 35px;
     align-self: center;
     width: 90%;
     height: 280px;
@@ -318,7 +317,7 @@ footer {
 .visible{
     animation-name: izquierda;
     position: relative;
-    
+    margin: auto;
     opacity: 1;
     padding-left: 2%;
     width: 95%;
