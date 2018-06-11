@@ -1,14 +1,11 @@
 main {}
 
 body {
-
     font-family: "Lato", sans-serif;
     background-color: #0E0B16;
-
 }
 
 /*Header*/
-
 header {
     color: aliceblue;
     padding-right: 35px;
@@ -72,7 +69,6 @@ a {
 
 
 /*------MAIN----*/
-
 main {
     /*margin-top: 15px;*/
     /*background-color: #E7DFDD;*/
@@ -82,48 +78,38 @@ main {
 }
 
 /*General de las listas*/
-
 ul {
     list-style-type: none;
 }
 
 /*---Scrolling Promos---*/
-
-.scrollProm {
-    align-content: center;
-    padding: 30px;
-    /*margin: 30px;*/
+.scrollProm {    
+    padding: 40px;
+    margin: 35px;
+    align-self: center;
     width: 90%;
-     display: flex;
-    justify-content: space-between;
-   align-items: center;
+    height: 280px;
+    display: block;
+    overflow: inherit;    
+    align-self: auto;   
 }
 
 .imag {
-    margin: 10px;
-    
-    float: left;
-    align-content: center;
-    /*display: inline-block;
-*/
+    vertical-align: middle;
+    align-self: center;    
+    display: block;    
 }
 
-.promo1 {
-    width: 100%;
-    height: 200px;
-    align-content: center;
-
+#promo1 {
+    align-self: auto;   
 }
 
-.promo2 {
-    width: 100%;
-    height: 200px;
-    align-content: center;
+#promo2 {    
+    align-self: auto;
 }
 
-.promo3 {
-    width: 100%;
-    height: 200px;
+#promo3 {
+    align-self: auto;
 }
 
 /*---featured departments---*/
@@ -139,14 +125,12 @@ ul {
 .imgBox {
     display: flex;
     justify-content: space-between;
-
 }
 
 .dept {
     flex-basis: 30%;
     display: flex;
     flex-direction: column;
-
 }
 
 /*Brand logos*/
@@ -287,4 +271,56 @@ footer {
     .sidenav a {
         font-size: 18px;
     }
+}
+
+/*botones siguiente y anterior*/
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.prev{
+    left: 0px;<
+}
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.oculto{
+    animation-name: derecha;
+    position: relative;    
+    width: 0%;
+    height: 0px;   
+    opacity: 0; 
+    transition: 1s;
+    
+}
+.visible{
+    animation-name: izquierda;
+    position: relative;
+    margin: auto;
+    opacity: 1;
+    padding-left: 2%;
+    width: 95%;
+    height: 300px;    
+    transition: 2s;    
 }
