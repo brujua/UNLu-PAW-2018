@@ -1,12 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>UNLu - PAW - Reproductor de Video</title>
     <link rel="stylesheet" href="rpd-video.css">
     <meta name="author" content="Bruno Crisafulli y Mario Quiroga">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="rpd-video.js" type="text/javascript"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            VideoList.init();
+        });
+
+    </script>
 </head>
+
 <body>
-    
+
+
+    <section class="video-player" id="sectionVid">
+        <video id="videoPlayer" width="680" height="400" controls>
+            <source id="videoSource" src="" type="video/mp4">
+        </video>
+    </section>
+
+    <!-- Supongo que el backend imprime una ul con las siguientes caract-->
+    <ol>
+        <li>
+            <input type="hidden" class="vid-src" value="videos/sample1.mp4">
+            <span>sample1.mp4</span>
+        </li>
+        <li>
+            <input type="hidden" class="vid-src" value="videos/sample2.mp4">
+            <span>sample2.mp4</span>
+        </li>
+        <li>
+            <input type="hidden" class="vid-src" value="videos/sample3.mp4">
+            <span>sample3.mp4</span>
+        </li>
+    </ol>
+
+    <section class="vid-list-controls">
+        <button id="prev"> << </button>
+        <button id="next">>></button>
+        <label for="random">Random</label>
+        <input type="checkbox" id="random">
+        <label for="loop">Bucle</label>
+        <input type="checkbox" id="loop">
+    </section>
 </body>
 </html>
