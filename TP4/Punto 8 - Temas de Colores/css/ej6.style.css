@@ -85,6 +85,7 @@ ul {
 /*---Scrolling Promos---*/
 .scrollProm {    
     padding-left : 40px;
+    padding-bottom: 40px;
     margin-left: 35px;
     margin-bottom: 40px;
     align-self: center;
@@ -125,6 +126,7 @@ ul {
 
 .imgBox {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
 }
 
@@ -238,7 +240,7 @@ footer {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: #0E0B16;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;

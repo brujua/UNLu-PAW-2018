@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>UNLu-PAW-Ejercicio 6</title>
+    <meta name="author" content="Bruno Crisafulli y Mario Quiroga">
+    <link rel="stylesheet" href="css/ej6.style.css">
+    <link rel="stylesheet" type="text/css" href="css/progres.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/personalize.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <header>
+
+        <div class="header-1erRow">
+            <img src="imgs/logo.jpg" alt="Company Logo" id="logo" />
+
+            <h3 id="telefono"> Tel: 0800-666-777</h3>
+            <div id="Checkout">
+                <button type="button" name="Checkout"> Checkout</button>
+            </div>
+        </div>
+        <nav>
+            <section id="menu" class="menu-1erRow">
+                <span id="menuButton" onclick="openNav()">&#9776; Menu</span>
+                <button onclick="personalizer.changeColorPalete()">Change color palete</button>
+                <div class="sidenav" id="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="#">Menu Option 1</a>
+                    <a href="#">Menu Option 2</a>
+                    <a href="#">Menu Option 3</a>
+                </div>
+                <div id="searchBox" class="menu-1erRow">
+                    <label id="searchTag" for="search">Búsqueda</label>
+                    <input type="text" name="search">
+                </div>
+            </section>
+            <section class="linknav">
+                <a href="">Link1</a>
+                <a href="">Link2</a>
+                <a href="">Link3</a>
+            </section>
+        </nav>
+
+    </header>
+
+    <main>
+        <section class="scrollProm" id="Scrolling Promos">       
+                 
+            <div class="imag">
+                <img class="visible" id="promo1" src="imgs/slim.jpg" alt="slim powerfull laptop">
+            </div>
+            <div class="imag">
+                <img class="oculto" id="promo2" src="imgs/promoSlide.png" alt="slim powerfull laptop">
+            </div>
+            <div class="imag">
+                <img class="oculto" id="promo3" src="imgs/slim.jpg" alt="slim powerfull laptop">
+            </div>
+            <a class="prev" onclick="anteriorImagen()">&#10094;</a>
+            <a class="next" onclick="seguienteImagen()">&#10095;</a>
+
+            <div id="myProgress">
+                <div id="myBar">10%</div>
+            </div>
+
+        </section>
+        <section class="featured-depts">
+            <h2>Featured Departments <button onclick="personalizer.changeInformationView()"> Change View</button> </h2>
+
+            <div class="imgBox">
+                <div class="dept">
+                    <img src="imgs/fd1.jpg" alt="">
+                    <p><b>Lorem ipsum dolor</b> sit amet, consectetur adipiscing elit. Maecenas sollicitudin malesuada facilisis. Proin ultrices nisi lorem, at porttitor lacus tristique.
+                    </p>
+                </div>
+                <div class="dept">
+                    <img src="imgs/fd2.jpg" alt="">
+                    <p><b>Lorem ipsum dolor</b> sit amet, consectetur adipiscing elit. Maecenas sollicitudin malesuada facilisis. Proin ultrices nisi lorem, at porttitor lacus tristique.
+                    </p>
+                </div>
+                <div class="dept">
+                    <img src="imgs/fd3.jpg" alt="">
+                    <p><b>Lorem ipsum dolor</b> sit amet, consectetur adipiscing elit. Maecenas sollicitudin malesuada facilisis. Proin ultrices nisi lorem, at porttitor lacus tristique.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="container">
+            <img class="brand-logos" src="imgs/brandLogos.jpg" alt="brand logos">
+        </section>
+        <div class="garabatosBox">
+            <section class="main-garab">
+                <article>
+                    <h2>Lorem ipsum dolor</h2>
+                    <p> sit amet, consectetur adipiscing elit. Maecenas sollicitudin malesuada facilisis. Proin ultrices nisi lorem, at porttitor lacus tristique.</p>
+                </article>
+                <article style="display: none">
+                    <h2>title</h2>
+                    <p>sit amet, consectetur adipiscing elit. Maecenas sollicitudin malesuada facilisis. Proin ultrices nisi lorem, at porttitor lacus tristique.</p>
+                </article>
+                <article style="display: none">
+                    <h2>title</h2>
+                    <p>sit amet, consectetur adipiscing elit. Maecenas sollicitudin malesuada facilisis. Proin ultrices nisi lorem, at porttitor lacus tristique.</p>
+                </article>
+            </section>
+            <div class="vertical-border"></div>
+            <article class="garab">
+                <h2>Lorem ipsum dolor</h2>
+                <p>sit amet, consectetur adipiscing elit. Maecenas sollicitudin malesuada facilisis. Proin ultrices nisi lorem, at porttitor lacus tristique.</p>
+            </article>
+            <div class="vertical-border"></div>
+            <article class="garab">
+                <h2>Lorem ipsum dolor</h2>
+                <p>sit amet, consectetur adipiscing elit. Maecenas sollicitudin malesuada facilisis. Proin ultrices nisi lorem, at porttitor lacus tristique.</p>
+            </article>
+
+        </div>
+    </main>
+    <footer>
+        <section class="links">
+            <section class="footerLinks">
+                <a href="">About Us</a>
+                <a href="">consectetur</a>
+                <a href="">adipiscing</a>
+                <a href="">link</a>
+                <!-- ... -->
+            </section>
+            <div class="vertical-border"></div>
+            <section class="footerLinks">
+                <a href="">Team</a>
+                <a href="">nisi</a>
+                <a href="">lorem</a>
+                <a href="">link</a>
+                <!-- ... -->
+            </section>
+            <div class="vertical-border"></div>
+            <section class="footerLinks">
+                <a href="">Other Proyects</a>
+                <a href="">lacus</a>
+                <a href="">tristique</a>
+                <a href="">link</a>
+                <!-- ... -->
+            </section>
+            <div class="vertical-border"></div>
+            <div class="news-sing">
+                <h2><img id=mailIcon src="imgs/mailIcon.png" alt="a letter / envelope"> News Letter Sign Up</h2>
+                <input type="text" name="mailSignUp">
+                <button type="button">subscribe</button>
+            </div>
+        </section>
+        <section>
+            <img id=socialIcon src="imgs/socialIcons.jpg" alt="social net links">
+
+        </section>
+        <section class="firmas">
+            <p>Desarrollado por Bruno Crisafulli y Mario Quiroga</p>
+        </section>
+    </footer>
+    <script>
+        function openNav() {
+            document.getElementById("sidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("sidenav").style.width = "0";
+        }
+
+    </script>
+    <script type="text/javascript" src="js/progres.js"></script>
+    <script type="text/javascript" src="js/carrusel.js"></script>
+</body>
+
+</html>
