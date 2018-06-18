@@ -34,7 +34,7 @@ var VideoList = {
     },
 
     /* -- cambia el video, forward es booleano que indica si se avanza o se retrocede --
-    * -- la funcion tiene encuenta los si estan prendidos los flags random y bucle --  */
+    * -- la funcion tiene encuenta si estan prendidos los flags random y bucle --  */
     cambiar: function (forward) {
         //deselecciono el actual en la lista
         this.unselectAll();
