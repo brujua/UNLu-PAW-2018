@@ -1,0 +1,5 @@
+# UNLu-PAW-2018
+El tp se encuentra dividido en una carpeta para cada ejercicio.
+Cada carpeta posee entonces, un punto de entrada, llamado index.php o index.html.
+En el caso del punto 9, se requiere configurar una base de datos postgres exactamente igual que en las anteriores entregas. Se provee un archivo config.php que se debe editar para coincidir con su configuración de la base de datos y se provee el script de creación de tabla en la subcarpeta sql. Recuerde que se ha utilizado una base de datos postgres, si desea utilizar otra, por ejemplo mysql, deberá modificar la linea 31 del archivo /core/Config.php en la parte que dice 'pgsql' por 'mysql'.
+En el caso del punto 10, se requiere indicar la KEY de googleAPI para poder utilizar el servicio de google. Para esto se provee un ejemplo de archivo de configuración, en el se debe editar la linea correspondiente con su valor de key y quitarle la extension '.example'.
